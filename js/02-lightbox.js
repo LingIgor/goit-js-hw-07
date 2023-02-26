@@ -7,6 +7,12 @@ const gallery = document.querySelector(".gallery");
 const partOfMarking = marking(galleryItems);
 
 gallery.insertAdjacentHTML("beforeend", partOfMarking);
+let lightbox = new SimpleLightbox(".gallery a", {
+  captionSelector: "img",
+  captionsData: "alt",
+  captionPosition: "bottom",
+  captionDelay: 250,
+});
 
 function marking(part) {
   return part
@@ -20,17 +26,4 @@ function marking(part) {
   `;
     })
     .join("");
-}
-
-gallery.addEventListener("click", onGalleryClick);
-
-function onGalleryClick(e) {
-  e.preventDefault();
-  let lightbox = new SimpleLightbox(".gallery a", {
-    captionSelector: "img",
-    captionsData: "alt",
-    captionPosition: "bottom",
-    captionDelay: 250,
-    scrollZoom: false,
-  });
 }
